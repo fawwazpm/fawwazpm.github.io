@@ -609,42 +609,42 @@ footer .wrap { border-top: 1px solid #3A4A57; padding-top: 1.2rem; }
         <div class="cert-issuer">Budapest University of Technology and Economics</div>
         <h3>Master of Science in Electrical Engineering</h3>
         <div class="cert-date">1 July 2026</div>
-        <button class="cert-btn" onclick="openCert('certmsc.pdf','MSc Degree — Budapest University of Technology and Economics')">📄 View Certificate</button>
+        <button class="cert-btn" onclick="openCert('certmsc.pdf','MSc Degree Budapest University of Technology and Economics')">📄 View Certificate</button>
       </div>
 
       <div class="cert-card">
         <div class="cert-issuer">Sphere</div>
         <h3>How to be a Sphere Champion</h3>
         <div class="cert-date">28 August 2026</div>
-        <button class="cert-btn" onclick="openCert('certsphere.pdf','Sphere Champion — Sphere')">📄 View Certificate</button>
+        <button class="cert-btn" onclick="openCert('certsphere.pdf','Sphere Champion Sphere')">📄 View Certificate</button>
       </div>
 
       <div class="cert-card">
         <div class="cert-issuer">CHS Alliance</div>
         <h3>Introduction to the Core Humanitarian Standard on Quality and Accountability (2024)</h3>
         <div class="cert-date">22 December 2025</div>
-        <button class="cert-btn" onclick="openCert('certchs.pdf','Core Humanitarian Standard — CHS Alliance')">📄 View Certificate</button>
+        <button class="cert-btn" onclick="openCert('certchs.pdf','Core Humanitarian Standard CHS Alliance')">📄 View Certificate</button>
       </div>
 
       <div class="cert-card">
         <div class="cert-issuer">DanChurchAid (ACT Alliance)</div>
         <h3>Prevention of Sexual Exploitation, Abuse and Harassment (PSEAH)</h3>
         <div class="cert-date">22 December 2025</div>
-        <button class="cert-btn" onclick="openCert('certpseah.pdf','PSEAH — DanChurchAid')">📄 View Certificate</button>
+        <button class="cert-btn" onclick="openCert('certpseah.pdf','PSEAH DanChurchAid')">📄 View Certificate</button>
       </div>
 
       <div class="cert-card">
         <div class="cert-issuer">UNHCR / Global Protection Cluster</div>
         <h3>Human Rights Engagement and Advocacy Training</h3>
         <div class="cert-date">29 September 2022</div>
-        <button class="cert-btn" onclick="openCert('certhumanrights.pdf','Human Rights Advocacy — UNHCR / Global Protection Cluster')">📄 View Certificate</button>
+        <button class="cert-btn" onclick="openCert('certhumanrights.pdf','Human Rights Advocacy UNHCR Global Protection Cluster')">📄 View Certificate</button>
       </div>
 
       <div class="cert-card">
         <div class="cert-issuer">Danish Refugee Council</div>
         <h3>HEAT 'Lite' — Hostile Environment Awareness Training</h3>
         <div class="cert-date">21–24 January 2018, Iraq</div>
-        <button class="cert-btn" onclick="openCert('certheat.pdf','HEAT Lite — Danish Refugee Council')">📄 View Certificate</button>
+        <button class="cert-btn" onclick="openCert('certheat.pdf','HEAT Lite Danish Refugee Council')">📄 View Certificate</button>
       </div>
 
     </div>
@@ -669,6 +669,13 @@ function openCert(file, title) {
   document.getElementById('certModalFrame').src = file;
   document.getElementById('certModal').classList.add('open');
   document.body.style.overflow = 'hidden';
+  if (typeof gtag === 'function') {
+    gtag('event', 'certificate_view', {
+      event_category: 'Certificates',
+      event_label: title,
+      file_name: file
+    });
+  }
 }
 function closeCert() {
   document.getElementById('certModal').classList.remove('open');
